@@ -1,8 +1,12 @@
 #include "fast_float/fast_float.h"
 
-#include <iostream>
 #include <cassert>
 #include <cmath>
+#include <cstdio>
+#include <ios>
+#include <iostream>
+#include <limits>
+#include <stdexcept>
 
 #if defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__) 
 // Anything at all that is related to cygwin, msys and so forth will
@@ -128,7 +132,7 @@ bool allvalues() {
 
 inline void Assert(bool Assertion) {
 #if defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__)  || defined(sun) || defined(__sun)
-  if (!Assertion) { std::cerr << "Omitting hard falure on msys/cygwin/sun systems."; }
+  if (!Assertion) { std::cerr << "Omitting hard failure on msys/cygwin/sun systems."; }
 #else 
   if (!Assertion) { throw std::runtime_error("bug"); }
 #endif
